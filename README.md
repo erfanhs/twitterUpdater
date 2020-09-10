@@ -13,6 +13,6 @@ don't forget to start mongodb service on your system.
 ```
 git clone https://github.com/erfanhs/twitterUpdater.git
 cd twitterUpdater
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 python3 bot.py
 ```
