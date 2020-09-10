@@ -2,7 +2,7 @@
 twitter updater for telegram
 
 
-# <strong>to do</strong> before run (bot.py)
+# TO DO (bot.py)
 1 - set twitter api tokens (consumer token, consumer secret, access token, access token secret).<br />
 2 - set telegram bot token.<br />
 3 - set allowed chat IDs.<br />
