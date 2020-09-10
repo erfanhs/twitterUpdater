@@ -29,7 +29,7 @@ updater = Updater(TOKEN)
 dispatcher = updater.dispatcher
 
 
-admins = [] # list of allowed chat IDs (int)
+cids = [] # list of allowed chat IDs (int)
 
 
 def twitter_updater():
