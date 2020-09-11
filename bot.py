@@ -41,8 +41,12 @@ def twitter_updater():
 		for page in pages:
 
 			sn = page['screen_name']
-
-			tweets = api.user_timeline(sn, count = 1 if not page['last_tweet'] else 6, tweet_mode="extended")
+			
+			try:
+				tweets = api.user_timeline(sn, count = 1 if not page['last_tweet'] else 6, tweet_mode="extended")
+			except tweepy.error.TweepError:
+				print('error(131): Internal Error !')
+				continue
 
 			tweets_to_send = []
 
