@@ -6,9 +6,15 @@ import pymongo
 
 import threading
 import requests
+from requests.adapters import HTTPAdapter
 import urllib.parse
 from time import sleep
 
+
+# telegram api session
+
+tSession = requests.Session()
+tSession.mount('https://api.telegram.org', HTTPAdapter(max_retries=5))
 
 # twitter api
 
@@ -70,7 +76,7 @@ def twitter_updater():
 
 				for cid in page['chats']:
 					queryString = urllib.parse.urlencode({'chat_id': cid, 'text': to_send})
-					requests.get(('https://api.telegram.org/bot%s/sendMessage?' % TOKEN) + queryString)
+					tSession.get(('https://api.telegram.org/bot%s/sendMessage?' % TOKEN) + queryString)
 
 			if tweets_to_send:
 				mycol.update_one({'screen_name': sn}, {'$set': {'last_tweet' : tweets_to_send[0].id_str }})
